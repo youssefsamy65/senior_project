@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <node name="find_object_3d" pkg="find_object_2d" type="find_object_2d" output="screen">
+    <param name="gui" value="true" type="bool" />
+
+    <param name="subscribe_depth" value="true" type="bool" />
+
+    <remap from="depth_registered/image_raw" to="/rrbot/camera1/image_raw" />
+    <remap from="depth_registered/camera_info" to="/rrbot/camera1/camera_info" />
+  </node>
+
+  <!-- Example of tf synchronization with the objectsStamped message -->
+  <node name="tf_example" pkg="find_object_2d" type="tf_example" output="screen">
+    <param name="map_frame_id" value="/map" type="string" />
+    <param name="object_prefix" value="object" type="str" />
+  </node>
+</launch>
+
